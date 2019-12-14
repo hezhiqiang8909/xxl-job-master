@@ -43,7 +43,8 @@ XXL-JOB是一个轻量级分布式任务调度平台，其核心设计目标是�
 ## Documentation
 - [中文文档](http://www.xuxueli.com/xxl-job/)
 - [English Documentation](http://www.xuxueli.com/xxl-job/en/)
-
+- [钉钉等告警方式](https://github.com/hezhiqiang8909/xxl-job)
+- [多版本告警方式](https://github.com/hezhiqiang8909/xxl-job-master)
 
 ## Communication    
 - [社区交流](http://www.xuxueli.com/page/community.html)
