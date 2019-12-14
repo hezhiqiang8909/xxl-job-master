@@ -1,12 +1,11 @@
-package com.xuxueli.executor.sample.nutz.jobhandler;
-
-import com.xxl.job.core.handler.annotation.JobHandler;
-import org.nutz.ioc.loader.annotation.IocBean;
+package com.xxl.job.executor.service.jobhandler;
 
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.IJobHandler;
+import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
 import com.xxl.job.core.util.ShardingUtil;
+import org.springframework.stereotype.Service;
 
 /**
  * 分片广播任务
@@ -14,7 +13,7 @@ import com.xxl.job.core.util.ShardingUtil;
  * @author xuxueli 2017-07-25 20:56:50
  */
 @JobHandler(value="shardingJobHandler")
-@IocBean
+@Service
 public class ShardingJobHandler extends IJobHandler {
 
 	@Override
@@ -35,5 +34,5 @@ public class ShardingJobHandler extends IJobHandler {
 
 		return SUCCESS;
 	}
-
+	
 }

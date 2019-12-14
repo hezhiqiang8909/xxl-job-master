@@ -10,8 +10,8 @@ import com.xxl.job.core.glue.GlueTypeEnum;
 import com.xxl.rpc.remoting.invoker.call.CallType;
 import com.xxl.rpc.remoting.invoker.reference.XxlRpcReferenceBean;
 import com.xxl.rpc.remoting.invoker.route.LoadBalance;
-import com.xxl.rpc.remoting.net.impl.netty_http.client.NettyHttpClient;
-import com.xxl.rpc.serialize.impl.HessianSerializer;
+import com.xxl.rpc.remoting.net.NetEnum;
+import com.xxl.rpc.serialize.Serializer;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -44,20 +44,18 @@ public class ExecutorBizImplTest {
         TimeUnit.SECONDS.sleep(3);
 
         // init executor biz proxy
-        XxlRpcReferenceBean referenceBean = new XxlRpcReferenceBean();
-        referenceBean.setClient(NettyHttpClient.class);
-        referenceBean.setSerializer(HessianSerializer.class);
-        referenceBean.setCallType(CallType.SYNC);
-        referenceBean.setLoadBalance(LoadBalance.ROUND);
-        referenceBean.setIface(ExecutorBiz.class);
-        referenceBean.setVersion(null);
-        referenceBean.setTimeout(3000);
-        referenceBean.setAddress("127.0.0.1:9999");
-        referenceBean.setAccessToken(null);
-        referenceBean.setInvokeCallback(null);
-        referenceBean.setInvokerFactory(null);
-
-        executorBiz = (ExecutorBiz) referenceBean.getObject();
+        executorBiz = (ExecutorBiz) new XxlRpcReferenceBean(
+                NetEnum.NETTY_HTTP,
+                Serializer.SerializeEnum.HESSIAN.getSerializer(),
+                CallType.SYNC,
+                LoadBalance.ROUND,
+                ExecutorBiz.class,
+                null,
+                3000,
+                "127.0.0.1:9999",
+                null,
+                null,
+                null).getObject();
     }
 
     @After
@@ -133,7 +131,7 @@ public class ExecutorBizImplTest {
         triggerParam.setGlueSource(null);
         triggerParam.setGlueUpdatetime(System.currentTimeMillis());
         triggerParam.setLogId(1);
-        triggerParam.setLogDateTime(System.currentTimeMillis());
+        triggerParam.setLogDateTim(System.currentTimeMillis());
 
         // Act
         final ReturnT<String> retval = executorBiz.run(triggerParam);

@@ -1,10 +1,10 @@
-package com.xuxueli.executor.sample.nutz.jobhandler;
+package com.xxl.job.executor.service.jobhandler;
 
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
 import com.xxl.job.core.log.XxlJobLogger;
-import org.nutz.ioc.loader.annotation.IocBean;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
  * @author xuxueli 2018-09-16 03:48:34
  */
 @JobHandler(value="commandJobHandler")
-@IocBean
+@Component
 public class CommandJobHandler extends IJobHandler {
 
     @Override
