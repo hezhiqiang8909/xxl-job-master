@@ -14,7 +14,9 @@ CREATE TABLE `xxl_job_info` (
   `add_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `author` varchar(64) DEFAULT NULL COMMENT '作者',
-  `alarm_email` varchar(255) DEFAULT NULL COMMENT '报警邮件',
+  `alarm_email` varchar(254) DEFAULT NULL COMMENT '报警邮件',
+  `alarm_phone` varchar(255) DEFAULT NULL COMMENT '报警短信手机号',
+  `alarm_ding_robot` varchar(255) DEFAULT NULL COMMENT '报警钉钉机器人',
   `executor_route_strategy` varchar(50) DEFAULT NULL COMMENT '执行器路由策略',
   `executor_handler` varchar(255) DEFAULT NULL COMMENT '执行器任务handler',
   `executor_param` varchar(512) DEFAULT NULL COMMENT '执行器任务参数',
@@ -29,8 +31,7 @@ CREATE TABLE `xxl_job_info` (
   `trigger_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '调度状态：0-停止，1-运行',
   `trigger_last_time` bigint(13) NOT NULL DEFAULT '0' COMMENT '上次调度时间',
   `trigger_next_time` bigint(13) NOT NULL DEFAULT '0' COMMENT '下次调度时间',
-  `alarm_phone` varchar(255) DEFAULT NULL COMMENT '报警短信手机号',
-  `alarm_ding_robot` varchar(255) DEFAULT NULL COMMENT '报警钉钉机器人',
+
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
